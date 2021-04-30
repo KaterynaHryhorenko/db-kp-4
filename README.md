@@ -2,15 +2,15 @@
 
 ## MongoDB
 
-* Запустити mongod (за замовчуванням БД запуститься на localhost, порт 27017)
+* Запустити mongod 
 
 ## Програма
 
 * Створіть віртуальне оточення Python 
->> python3 -m vev env
+>> python virtualenv venv
 
 * Активуйте віртуальне оточення Python
->> source env/bin/activate
+>> Scripts/activate.bat
 
 * Встановіть необхідні залежності
 >> pip install -r requirements.txt
