@@ -36,18 +36,23 @@ class DataBase:
             for row in reader:
                 c = 0
                 doc={}
-                inner_arr={}
+                inner_arr=[]
+                result = {}
                 for n in range(0, len(header)):
                     c += 1
-                    if row[n] != 'null':
-                        if c > 15:
-                            inner_arr[header[n]] = row[n]
-                        else:
-                            doc[header[n]] = row[n]
-                doc['results'] = [].append(inner_arr)
+                    if c > 16:
+                        result[header[n]] = row[n]
+                        if (c - 16) % 10 == 0:
+                            inner_arr.append(result)
+                            result = {}
+                    else:
+                        doc[header[n]] = row[n]
+                
+                doc['results'] = inner_arr
                 try:
                     self.collection.insert_one(doc)
-                    print(doc)
+       #             print(doc)
+        #            print('\n\n')
                 except Exception as e:
                     print(f'Insert error:\n{doc}\n{e}')
 
